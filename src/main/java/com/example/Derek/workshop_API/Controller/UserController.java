@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,5 +24,11 @@ public class UserController {
 		List<UserGetDTO> listToReturn = userService.findAllUsers();
 		
 		return ResponseEntity.ok().body(listToReturn);
+		}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<UserGetDTO> findUserByID(@PathVariable String id){
+		UserGetDTO userToReturn = userService.findUserById(id);
+		return ResponseEntity.ok().body(userToReturn);
 	}
 }

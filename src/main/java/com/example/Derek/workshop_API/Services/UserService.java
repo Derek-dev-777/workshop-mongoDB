@@ -10,6 +10,7 @@ import com.example.Derek.workshop_API.Mappers.UserMapper.UserMapper;
 import com.example.Derek.workshop_API.Models.Entities.UserEntity;
 import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserGetDTO;
 import com.example.Derek.workshop_API.Repositories.UserRepository;
+import com.example.Derek.workshop_API.Services.Exceptions.ObjectNotFoundException;
 
 @Service
 public class UserService {
@@ -25,6 +26,12 @@ public class UserService {
 			listToReturn.add(UserMapper.convertEntityToDTO(entity));
 		}
 		return listToReturn;
+	}
+	
+	public UserGetDTO findUserById(String id) {
+		UserEntity userFound = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Object not found"));
+		UserGetDTO userToReturn = UserMapper.convertEntityToDTO(userFound);
+		return userToReturn;
 	}
 	
 }
