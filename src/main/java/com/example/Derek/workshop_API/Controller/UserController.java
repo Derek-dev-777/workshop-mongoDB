@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Derek.workshop_API.Models.DTOs.PostDTO.PostGetDTO;
 import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserGetDTO;
 import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserPostDTO;
 import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserPutDTO;
@@ -54,5 +55,11 @@ public class UserController {
 	public ResponseEntity<UserGetDTO> updateUserById(@PathVariable String id, @RequestBody UserPutDTO dto){
 		UserGetDTO userToReturn = userService.updateUserByID(id, dto);
 		return ResponseEntity.ok().body(userToReturn);
+	}
+	
+	@GetMapping("{id}/posts")
+	public ResponseEntity<List<PostGetDTO>> findAllUserPosts(@PathVariable String id){
+		List<PostGetDTO> listToReturn = userService.findUserPosts(id);
+		return ResponseEntity.ok().body(listToReturn);
 	}
 }
