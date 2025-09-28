@@ -1,9 +1,12 @@
 package com.example.Derek.workshop_API.Models.Entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
@@ -16,6 +19,9 @@ public class UserEntity implements Serializable {
 	private String name;
 	private String email;
 	
+	@DBRef(lazy = true)
+	private List<PostEntity> posts = new ArrayList<>();
+	
 	public UserEntity() {}
 
 	public UserEntity(String id, String name, String email) {
@@ -26,7 +32,8 @@ public class UserEntity implements Serializable {
 
 	public String getId() { return id; }
 	public String getName() { return name; }
-	public String getEmail() {return email; }
+	public String getEmail() { return email; }
+	public List<PostEntity> getPosts() { return posts; }
 
 	public void setName(String name) { this.name = name; }
 	public void setEmail(String email) { this.email = email; }

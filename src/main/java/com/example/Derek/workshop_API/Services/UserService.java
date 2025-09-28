@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Derek.workshop_API.Mappers.UserMapper.UserMapper;
+import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserGetDTO;
+import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserPostDTO;
+import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserPutDTO;
 import com.example.Derek.workshop_API.Models.Entities.UserEntity;
-import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserGetDTO;
-import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserPostDTO;
-import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserPutDTO;
 import com.example.Derek.workshop_API.Repositories.UserRepository;
-import com.example.Derek.workshop_API.Services.Exceptions.ObjectNotFoundException;
+import com.example.Derek.workshop_API.Services.ServiceExceptions.ObjectNotFoundException;
 
 @Service
 public class UserService {

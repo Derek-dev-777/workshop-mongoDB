@@ -7,6 +7,8 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.example.Derek.workshop_API.Models.DTOs.PostDTO.PostAuthorGetDTO;
+
 @Document
 public class PostEntity implements Serializable {
 
@@ -17,11 +19,11 @@ public class PostEntity implements Serializable {
 	private LocalDateTime createdAt;
 	private String title;
 	private String body;
-	private UserEntity author;
+	private PostAuthorGetDTO author;
 	
 	public PostEntity() {}
 
-	public PostEntity(String id, LocalDateTime createdAt, String title, String body, UserEntity author) {
+	public PostEntity(String id, LocalDateTime createdAt, String title, String body, PostAuthorGetDTO author) {
 		this.id = id;
 		this.createdAt = createdAt;
 		this.title = title;
@@ -33,10 +35,10 @@ public class PostEntity implements Serializable {
 	public LocalDateTime getCreatedAt() { return createdAt; }
 	public String getTitle() { return title; }
 	public String getBody() { return body; }
-	public UserEntity getAuthor() { return author; }
+	public PostAuthorGetDTO getAuthor() { return author; }
 	
 	public void setTitle(String title) { this.title = title; }
-	public void setAuthor(UserEntity author) { this.author = author; }
+	public void setAuthor(PostAuthorGetDTO author) { this.author = author; }
 	public void setBody(String body) { this.body = body; }
 
 	@Override

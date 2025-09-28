@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import com.example.Derek.workshop_API.Models.DTOs.PostDTO.PostAuthorGetDTO;
 import com.example.Derek.workshop_API.Models.Entities.PostEntity;
 import com.example.Derek.workshop_API.Models.Entities.UserEntity;
 import com.example.Derek.workshop_API.Repositories.PostRepository;
@@ -31,11 +32,14 @@ public class Start implements CommandLineRunner{
 		UserEntity alex = new UserEntity(null, "Alex Green", "alex@gmail.com");
 		UserEntity bob = new UserEntity(null, "Bob Grey", "bob@gmail.com");
 		
-		PostEntity post1 = new PostEntity(null, LocalDateTime.now(), "Partiu viagem!", "Vou viajar para sp amanhã", maria);
-		PostEntity post2 = new PostEntity(null, LocalDateTime.now(), "Partiu treinar", "Vou treinar mais tarde", maria);
-		
 		userRepository.saveAll(Arrays.asList(maria, alex, bob));
+		
+		PostEntity post1 = new PostEntity(null, LocalDateTime.now(), "Partiu viagem!", "Vou viajar para sp amanhã", new PostAuthorGetDTO(maria.getId(), maria.getName()));
+		PostEntity post2 = new PostEntity(null, LocalDateTime.now(), "Partiu treinar", "Vou treinar mais tarde", new PostAuthorGetDTO(maria.getId(), maria.getName()));
+		
 		postRepository.saveAll(Arrays.asList(post1, post2));
-
+		
+		maria.getPosts().addAll(Arrays.asList(post1, post2));
+		userRepository.save(maria);
 	}
 }

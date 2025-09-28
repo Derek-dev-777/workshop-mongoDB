@@ -1,4 +1,4 @@
-package com.example.Derek.workshop_API.Services.Exceptions;
+package com.example.Derek.workshop_API.Services.ServiceExceptions;
 
 public class ObjectNotFoundException extends RuntimeException{
 

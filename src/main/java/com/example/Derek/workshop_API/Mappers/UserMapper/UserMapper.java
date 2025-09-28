@@ -1,8 +1,8 @@
 package com.example.Derek.workshop_API.Mappers.UserMapper;
 
+import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserGetDTO;
+import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserPostDTO;
 import com.example.Derek.workshop_API.Models.Entities.UserEntity;
-import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserGetDTO;
-import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserPostDTO;
 
 public class UserMapper {
 	

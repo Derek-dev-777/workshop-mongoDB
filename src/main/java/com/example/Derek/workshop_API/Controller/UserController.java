@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserGetDTO;
-import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserPostDTO;
-import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserPutDTO;
+import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserGetDTO;
+import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserPostDTO;
+import com.example.Derek.workshop_API.Models.DTOs.UserDTO.UserPutDTO;
 import com.example.Derek.workshop_API.Services.UserService;
 
 @RestController

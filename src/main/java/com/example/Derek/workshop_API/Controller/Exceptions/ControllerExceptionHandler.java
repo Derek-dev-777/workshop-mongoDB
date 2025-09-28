@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.example.Derek.workshop_API.Services.Exceptions.ObjectNotFoundException;
+import com.example.Derek.workshop_API.Services.ServiceExceptions.ObjectNotFoundException;
 
 import jakarta.servlet.http.HttpServletRequest;
 
