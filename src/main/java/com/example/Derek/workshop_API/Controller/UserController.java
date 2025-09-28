@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserGetDTO;
 import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserPostDTO;
+import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserPutDTO;
 import com.example.Derek.workshop_API.Services.UserService;
 
 @RestController
@@ -46,5 +48,11 @@ public class UserController {
 	public ResponseEntity<Void> deleteUserById(@PathVariable String id){
 		userService.deleteUserById(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@PutMapping("{id}")
+	public ResponseEntity<UserGetDTO> updateUserById(@PathVariable String id, @RequestBody UserPutDTO dto){
+		UserGetDTO userToReturn = userService.updateUserByID(id, dto);
+		return ResponseEntity.ok().body(userToReturn);
 	}
 }

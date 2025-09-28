@@ -10,6 +10,7 @@ import com.example.Derek.workshop_API.Mappers.UserMapper.UserMapper;
 import com.example.Derek.workshop_API.Models.Entities.UserEntity;
 import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserGetDTO;
 import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserPostDTO;
+import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserPutDTO;
 import com.example.Derek.workshop_API.Repositories.UserRepository;
 import com.example.Derek.workshop_API.Services.Exceptions.ObjectNotFoundException;
 
@@ -49,4 +50,16 @@ public class UserService {
 		userRepository.deleteById(userFound.getId());
 		
 	}
+	
+	public UserGetDTO updateUserByID(String id, UserPutDTO dto) {
+		UserEntity userFound = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Object not found"));
+		userFound.setName(dto.getName());
+		userFound.setEmail(dto.getEmail());
+		
+		userRepository.save(userFound);
+		
+		UserGetDTO userToReturn = UserMapper.convertEntityToDTO(userFound);
+		return userToReturn;
+	}
+	
 }
