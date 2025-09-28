@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.Derek.workshop_API.Mappers.UserMapper.UserMapper;
 import com.example.Derek.workshop_API.Models.Entities.UserEntity;
 import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserGetDTO;
+import com.example.Derek.workshop_API.Models.Entities.DTOs.UserDTO.UserPostDTO;
 import com.example.Derek.workshop_API.Repositories.UserRepository;
 import com.example.Derek.workshop_API.Services.Exceptions.ObjectNotFoundException;
 
@@ -29,9 +30,23 @@ public class UserService {
 	}
 	
 	public UserGetDTO findUserById(String id) {
-		UserEntity userFound = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Object not found"));
+		UserEntity userFound = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("User not found"));
 		UserGetDTO userToReturn = UserMapper.convertEntityToDTO(userFound);
 		return userToReturn;
 	}
 	
+	public UserGetDTO createNewUser(UserPostDTO dto) {
+		UserEntity userCreated = UserMapper.convertDTOtoEntity(dto);
+		
+		userRepository.save(userCreated);
+		
+		UserGetDTO userToReturn = UserMapper.convertEntityToDTO(userCreated);
+		return userToReturn;
+	}
+	
+	public void deleteUserById(String id) {
+		UserEntity userFound = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Object not found"));
+		userRepository.deleteById(userFound.getId());
+		
+	}
 }
