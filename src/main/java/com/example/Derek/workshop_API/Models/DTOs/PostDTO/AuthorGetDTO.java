@@ -1,13 +1,13 @@
 package com.example.Derek.workshop_API.Models.DTOs.PostDTO;
 
-public class PostAuthorGetDTO {
+public class AuthorGetDTO {
 	
 	private String id;
 	private String name;
 	
-	public PostAuthorGetDTO() {}
+	public AuthorGetDTO() {}
 
-	public PostAuthorGetDTO(String id, String name) {
+	public AuthorGetDTO(String id, String name) {
 		this.id = id;
 		this.name = name;
 	}
